@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button @click="fizzBuzz()">fizzbuzz</button>
     <v-container fluid>
       <v-row>
         <v-col :key="index" v-for="(user, index) in users" cols="12" sm="12" md="6" lg="3">
@@ -9,7 +8,6 @@
               <v-avatar size="90">
                 <img alt="user" :src="user.picture.large" />
               </v-avatar>
-
               <v-badge
                 :color="user.gender === 'male' ? 'blue' : 'pink'"
                 icon
@@ -63,35 +61,10 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "HelloWorld",
+  name: "Users",
   props: {
     msg: String,
   },
-  data() {
-    return {
-      messages: [
-        {
-          from: "You",
-          message: `Sure, I'll see you later.`,
-          time: "10:42am",
-          color: "deep-purple lighten-1",
-        },
-        {
-          from: "John Doe",
-          message: "Yeah, sure. Does 1:00pm work?",
-          time: "10:37am",
-          color: "green",
-        },
-        {
-          from: "You",
-          message: "Did you still want to grab lunch today?",
-          time: "9:47am",
-          color: "deep-purple lighten-1",
-        },
-      ],
-    };
-  },
-
   mounted() {
     this.$nextTick(function () {
       if (!this.users.length) {
@@ -105,27 +78,10 @@ export default {
   methods: {
     getRandomColor() {
       return "#" + ((Math.random() * 0xffffff) << 0).toString(16);
-    },
-    fizzBuzz(){
-      for (let i=1; i<=100; i++){
-        if(i%15 === 0){
-          console.log('fizzBuzz')
-        } else if(i%5 === 0){
-          console.log('buzz')
-        } else if(i%3 === 0){
-          console.log('fizz')
-        } else {
-          console.log(i)
-        }
-      }
     }
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* .title-background {
-  background-color: red;
- } */
 </style>
